@@ -16,14 +16,12 @@ def generate_caption(image, prompt):
 
     return caption
 
-# Load the demo image
-demo_image = Image.open("jungle-glass.png")
-
 # Define the Gradio interface
 iface = gr.Interface(
     fn=generate_caption,
-    inputs=[gr.Image(type="pil", label="Upload Image", default=demo_image), gr.Textbox(label="Prompt")],
+    inputs=[gr.Image(type="pil", label="Upload Image"), gr.Textbox(label="Prompt")],
     outputs=gr.Textbox(label="Generated Caption"),
+    examples=[["jungle-glass.png", ""]]
 )
 
 # Launch the interface
