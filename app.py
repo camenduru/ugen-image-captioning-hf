@@ -28,10 +28,15 @@ def generate_caption(image, prompt):
     return decoded_text
 
 # Define the Gradio interface
+description = """Quick demonstration of the new Unum uForm-gen for image captioning. Upload an image to generate a detailed caption. Modify the Prompt to change the level of detail in the caption.
+
+The model used in this app is available at [Hugging Face Model Hub](https://huggingface.co/unum-cloud/uform-gen) and the source code can be found on [GitHub](https://github.com/unum-cloud/uform)."""
+
 iface = gr.Interface(
     fn=generate_caption,
-    inputs=[gr.Image(type="pil", label="Upload Image"), gr.Textbox(label="Prompt")],
+    inputs=[gr.Image(type="pil", label="Upload Image"), gr.Textbox(label="Prompt", value="Describe the image in great detail")],
     outputs=gr.Textbox(label="Generated Caption"),
+    description=description
 )
 
 # Launch the interface
